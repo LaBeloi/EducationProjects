@@ -1,0 +1,17 @@
+.burger {
+  position: absolute;
+  top: 18px;
+  right: 20px;
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  .burger {
+    transform: rotate(90deg);
+    right: 77px;
+    top: 43%;
+  }
+  .burger:hover {
+    z-index: 5;
+  }
+}

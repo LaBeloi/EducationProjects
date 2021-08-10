@@ -1,0 +1,74 @@
+.userField {
+  margin: 20px 20px 8px 20px;
+}
+.userInfo {
+  display: flex;
+  align-items: center;
+}
+.userImg {
+  height: 20px;
+  width: 20px;
+  margin-right: 7px;
+}
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 7px;
+}
+.userName {
+  font-size: 10px;
+  color: var(--orange);
+}
+.userTime {
+  font-size: 10px;
+  color: var(--greyC4);
+}
+.userTimePublished {
+  display: none;
+}
+.posterHeader {
+  font-size: 16px;
+  line-height: 18.75px;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  margin: 0 20px 14px 0px;
+}
+.seen {
+  display: none;
+}
+@media (min-width: 1024px) {
+  .userField {
+    display: flex;
+    flex-flow: column-reverse;
+    justify-content: flex-end;
+    order: 2;
+    margin: 0;
+    max-width: 672px;
+  }
+  .userField > *:not(:first-child) {
+    margin-bottom: 8px;
+  }
+  .userTimePublished {
+    display: inline;
+    margin-right: 5px;
+    color: var(--greyC4);
+  }
+  .user {
+    order: 2;
+  }
+  .userTime {
+    margin-right: 5px;
+    order: 1;
+  }
+  .posterHeader {
+    margin-bottom: 0;
+  }
+  .seen {
+    display: block;
+    color: var(--grey99);
+    font-size: 14px;
+  }
+}

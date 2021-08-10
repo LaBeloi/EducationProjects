@@ -1,0 +1,86 @@
+@font-face {
+  font-family: "Amatic SC";
+  font-style: normal;
+  font-weight: 400;
+  src: local(""),
+    url("fonts/amatic-sc-v16-latin_cyrillic-700.woff2") format("woff2"),
+    /* Super Modern Browsers */
+      url("fonts/amatic-sc-v16-latin_cyrillic-regular.woff") format("woff"); /* Modern Browsers */
+}
+@font-face {
+  font-family: "Amatic SC";
+  font-style: normal;
+  font-weight: 700;
+  src: local(""),
+    url("fonts/amatic-sc-v16-latin_cyrillic-700.woff2") format("woff2"),
+    /* Super Modern Browsers */
+      url("fonts/amatic-sc-v16-latin_cyrillic-700.woff") format("woff"); /* Modern Browsers */
+}
+
+button {
+  background-color: transparent;
+  border: 3px solid black;
+  height: 31px;
+  cursor: pointer;
+}
+
+button:hover {
+  color: red;
+  border-color: red;
+}
+
+button:active {
+  color: wheat;
+  border-color: wheat;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  transition: all 350ms ease-out;
+}
+
+a:hover {
+  border-color: red;
+  color: red;
+}
+
+ul {
+  list-style: circle;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+body {
+  font-family: "Amatic SC", sans-serif;
+  font-size: 20px;
+  background-color: burlywood;
+}
+
+.container {
+  max-width: 1400px;
+  margin: auto;
+}
+
+.item {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-bottom: 30px;
+  transition: all 350ms ease-out;
+}
+
+.input {
+  width: 200px;
+  background-color: transparent;
+  border: 3px solid black;
+  padding: 5px;
+  margin-top: 10px;
+  margin-right: 20px;
+}
