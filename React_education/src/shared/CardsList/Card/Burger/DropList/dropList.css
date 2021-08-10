@@ -1,0 +1,73 @@
+svg {
+  margin-right: 2px;
+}
+.container {
+  position: absolute;
+  top: 49px;
+  right: 24px;
+  width: 140px;
+  background: var(--white);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  z-index: 100;
+}
+
+.list {
+  width: 100%;
+  padding: 0 20px 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.listItem {
+  width: 100%;
+  padding: 11px 0;
+  color: var(--grey99);
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.listItem:hover {
+  color: var(--orange);
+}
+
+.listItem:hover svg path {
+  fill: var(--orange);
+}
+
+.listItem:not(:last-child) {
+  border-bottom: 1px var(--greyD9) solid;
+}
+
+.btn {
+  width: 100%;
+  font-size: 12px;
+  line-height: 14.06px;
+  color: var(--grey66);
+  background-color: var(--greyD9);
+  padding: 11px 30px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--grey66);
+  color: var(--greyD9);
+}
+
+@media (min-width: 1024px) {
+  .container {
+    right: 25px;
+    top: 105px;
+  }
+  .listItem {
+    padding: 6px 0;
+  }
+  .btn {
+    display: none;
+  }
+}

@@ -1,0 +1,97 @@
+body {
+    background-color: coral;
+}
+
+.container {
+    max-width: 990px;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    height: 500px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#que {
+    background-color: #fff7;
+    padding: 10px 0px 10px 10px;
+    font-size: 18px;
+}
+
+.label {
+    font-size: 25px;
+    font-weight: 700;
+    margin-right: 25px;
+}
+
+.hidden {
+    display: none;
+}
+
+.card {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 30px;
+    background-color: #fff8;
+    border: 4px solid grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 60px;
+    font-weight: 700;
+    color: transparent;
+    user-select: none;
+}
+
+.color {
+    color: black;
+}
+
+.correct {
+    color: blueviolet;
+}
+
+.list {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    list-style: none;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.btn_div {
+    display: flex;
+    position: absolute;
+    bottom: -10px;
+    margin-bottom: 100px;
+}
+
+.btn {
+    font-size: 20px;
+    font-weight: 700;
+    height: 50px;
+    width: 200px;
+    background-color: transparent;
+    border: 4px solid black;
+}
+
+.btn:hover {
+    border-color: wheat;
+    color: wheat;
+}
+
+.btn:active {
+    color: black;
+    border-color: black;
+    background-color: wheat;
+}
+

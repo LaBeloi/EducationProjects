@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/index.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="buttons">
+            <button class="add-Student">Добавить студента</button>
+        </div>
+        <form class="form hidden" action="">
+            <div class="form__area" id="forName">
+                <input required class="form__input" id="name" placeholder="Введите ФИО студента..." type="text">
+            </div>
+            <div class="form__area" id="forFaculty">
+                <input required class="form__input" id="faculty" placeholder="Факультет студента..." type="text">
+            </div>
+            <div class="form__area" id="forBornDate">
+                <input required class="form__input" id="bornDate" placeholder="Дата рождения..." type="text">
+            </div>
+            <div class="form__area" id="forStartDate">
+                <input required class="form__input" id="startDate" placeholder="Год начала учобы..." type="text">
+            </div>
+            <div class="form__buttons">
+                <button class="form__btn">Добавить</button>
+                <button class="form__btn-back">Назад</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
