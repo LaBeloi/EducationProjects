@@ -26,9 +26,9 @@ interface ICommentsPost {
 
 export function CommentsPost( {recursionData}:ICommentsPost ) {
     const data = useContext(CommentsDataContext)
-    console.log(data)
+    // console.log(data)
     return (
-        <div>
+        <div className={styles.container}>
             { recursionData || recursionData !== undefined
                 ? 
                 recursionData.map((item:IComment) => 

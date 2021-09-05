@@ -31,6 +31,7 @@ export function Card( { id } : ICard ) {
                 button={<Burger />}
                 children={<DropList />}
                 isOpen={false}
+                id={item?.key}
             />
         </li>
     );

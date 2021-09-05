@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { EIcons, Icon } from "../../../shared/Icon/Icon";
 import { CommentsPost } from "../CommentsPost";
 import styles from './Comment.css';
+import { ReplyForm } from "./ReplyForm/ReplyForm";
 
 interface IComment {
     author?: string,
@@ -11,14 +12,25 @@ interface IComment {
 }
 
 export function Comment({ author, created, body, children }:IComment) {
+
+    const [isOpen, setIsOpen] = useState(false);
     const now = new Date().getTime() / 1000;
     const time = Math.round(((now - created!)/60)/60)
+
     let hour;
+
     if (time === 1) {
         hour = 'час'
     } else if (time === 2 || time === 3 || time === 4) {
         hour = 'часа'
     } else hour = 'часов'
+
+    const style = {
+        backgroundColor: 'var(--orange)',
+        borderRadius: '5px',
+        transform: 'scale(1.2) translateX(3px)',
+    }
+
     return (
         <div className={styles.comment}>
             <div className={styles.likesCounter}>
@@ -44,7 +56,7 @@ export function Comment({ author, created, body, children }:IComment) {
                 </div>
                 <ul className={styles.buttonsField}>
                     <li className={styles.buttonsItem}>
-                        <button className={styles.buttonsItem__btn}>
+                        <button className={styles.buttonsItem__btn} style={isOpen ? style : undefined} onClick={() => isOpen === false ? setIsOpen(true) : setIsOpen(false)}>
                             <Icon name={EIcons.comments} /> 
                             Ответить
                         </button>
@@ -62,6 +74,12 @@ export function Comment({ author, created, body, children }:IComment) {
                         </button>
                     </li>
                 </ul>
+                {isOpen && 
+                    <ReplyForm
+                        author={author} 
+                        onClose={() => setIsOpen(false)} 
+                    />
+                }
                 { children && 
                     <CommentsPost recursionData={children} />
                 }

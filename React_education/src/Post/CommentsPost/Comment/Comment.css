@@ -1,5 +1,5 @@
 .comment {
-  margin-bottom: 10px;
+  padding-top: 10px;
   display: flex;
 }
 .likesCounter {
@@ -28,6 +28,14 @@
 }
 .buttonsItem__btn:hover {
   cursor: pointer;
+  color: black;
+}
+.buttonsItem__btn:hover svg path {
+  fill: var(--black);
+}
+.buttonsItem__btn:active {
+  color: var(--grey99);
+  fill: var(--grey99);
 }
 .userArea {
   margin-top: 8px;
@@ -46,5 +54,9 @@
   left: -19px;
   width: 3px;
   background-color: var(--greyD9);
-  height: 50%;
+  height: calc(100% - 32px);
+}
+
+.test {
+  color: rebeccapurple;
 }
