@@ -8,7 +8,6 @@ interface IResponseObject {
     published?: number,
     likes?: number,
     key?: string,
-    preview?: string,
 }
 
 export function usePostsData() {
@@ -19,14 +18,14 @@ export function usePostsData() {
             axios.get('https://oauth.reddit.com/best', {
                 headers: { Authorization: `bearer ${token}` },
                 params: {
-                    limit: 100,
+                    limit: 5,
                 }
             })
             .then((res) => {
                 const data = res.data.data.children;
                 const dataArr = [];
                 for (let i of data) {
-                    dataArr.push({title: i.data.title, name: i.data.author_fullname, published: i.data.created, likes: i.data.score, key: i.data.id, preview: i.data.thumbnail})
+                    dataArr.push({title: i.data.title, name: i.data.author, published: i.data.created, likes: i.data.score, key: i.data.id})
                 }
                 return dataArr
             })

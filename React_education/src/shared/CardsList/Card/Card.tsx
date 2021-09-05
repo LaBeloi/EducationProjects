@@ -23,14 +23,15 @@ export function Card( { id } : ICard ) {
     const now = new Date().getTime() / 1000;
     const time = Math.round(((now - item?.published!)/60)/60)
     return (
-        <li className={styles.card}>
+        <li className={styles.card} id={item?.key} >
             <UserField title={item?.title} name={item?.name} time={time} />
-            <Poster img={item?.preview} />
+            <Poster />
             <ButtonsField likes={item?.likes} />
             <Dropdown 
                 button={<Burger />}
                 children={<DropList />}
                 isOpen={false}
+                id={item?.key}
             />
         </li>
     );

@@ -1,0 +1,16 @@
+.modal {
+  width: 960px;
+  max-height: 700px;
+  position: fixed;
+  top: 22%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  overflow: hidden;
+  background-color: var(--white);
+  border-radius: 7px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 10px 50px;
+  overflow-y: scroll;
+  overflow-x: scroll;
+}

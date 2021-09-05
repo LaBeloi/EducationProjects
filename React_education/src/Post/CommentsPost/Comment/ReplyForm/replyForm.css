@@ -1,0 +1,22 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 100%;
+  height: 100px;
+}
+.textInput {
+  font-family: "Roboto", serif;
+  width: 100%;
+  height: 90%;
+}
+.submitButton {
+  padding: 7px 20px;
+  background-color: var(--orange);
+  color: var(--greyD9);
+}
+.submitButton:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}

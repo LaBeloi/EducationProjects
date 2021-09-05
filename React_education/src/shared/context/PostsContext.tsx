@@ -7,7 +7,6 @@ interface ICreateContext {
     published?: number,
     likes?: number,
     key?: string,
-    preview?: string,
 }
 
 type TCreateContext = ICreateContext[]

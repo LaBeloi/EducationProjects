@@ -1,0 +1,62 @@
+.comment {
+  padding-top: 10px;
+  display: flex;
+}
+.likesCounter {
+  display: flex;
+  flex-direction: column;
+}
+.author {
+  cursor: pointer;
+  color: var(--orange);
+}
+.buttonsField {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.buttonsItem:not(:last-child) {
+  margin-right: 25px;
+}
+.buttonsItem__btn {
+  display: flex;
+  align-items: center;
+  color: var(--greyC4);
+}
+.buttonsItem__btn svg path {
+  fill: var(--greyC4);
+}
+.buttonsItem__btn:hover {
+  cursor: pointer;
+  color: black;
+}
+.buttonsItem__btn:hover svg path {
+  fill: var(--black);
+}
+.buttonsItem__btn:active {
+  color: var(--grey99);
+  fill: var(--grey99);
+}
+.userArea {
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+.textArea {
+  margin-bottom: 10px;
+}
+.info {
+  position: relative;
+}
+.info::after {
+  content: "";
+  position: absolute;
+  top: 35px;
+  left: -19px;
+  width: 3px;
+  background-color: var(--greyD9);
+  height: calc(100% - 32px);
+}
+
+.test {
+  color: rebeccapurple;
+}
