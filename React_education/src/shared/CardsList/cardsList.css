@@ -1,3 +1,18 @@
+.loadingSubmit {
+  display: flex;
+  justify-content: center;
+}
+.loadingSubmitButton {
+  font-family: "Roboto", serif;
+  font-weight: 800;
+  padding: 5px;
+  border: 1px var(--black) solid;
+  border-radius: 10px;
+}
+.loadingSubmitButton:hover {
+  background-color: var(--black);
+  color: var(--white);
+}
 @media all and (min-width: 1024px) {
   .cardsList {
     padding: 40px 0;

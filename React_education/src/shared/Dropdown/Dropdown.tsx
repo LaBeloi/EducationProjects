@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, SyntheticEvent, useCallback, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 import styles from './dropdown.css';
 
@@ -10,7 +10,7 @@ interface IDropdownProps {
 };
 
 export function Dropdown({ button, children, isOpen, id }: IDropdownProps) {
-    const [isDropdownActive, setIsDropdownActive] = useState(isOpen)
+  const [isDropdownActive, setIsDropdownActive] = useState(isOpen)
     const [cors, setCors] = useState<DOMRect>()
 
     const ref = useRef<HTMLDivElement>(null)

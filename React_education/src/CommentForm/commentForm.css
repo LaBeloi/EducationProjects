@@ -6,13 +6,24 @@
 .textarea {
   min-height: 90px;
   width: 100%;
+  padding: 10px;
+  font-family: "Roboto", serif;
+}
+.errorMessage {
+  width: 100%;
+  color: red;
+  font-weight: 900;
 }
 .bnt {
   padding: 15px 40px;
   background-color: var(--orange);
-  color: var(--greyD9);
+  color: var(--white);
 }
 .bnt:hover {
   cursor: pointer;
   transform: scale(1.1);
+}
+.bnt:disabled {
+  opacity: 0.5;
+  cursor: default;
 }

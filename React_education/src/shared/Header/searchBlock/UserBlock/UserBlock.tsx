@@ -7,9 +7,10 @@ import styles from './UserBlock.css'
 interface IUserBlockProps {
     avatarSrc?: string
     username?: string
+    loading?: boolean
 }
 
-export function UserBlock({ avatarSrc, username } : IUserBlockProps) {
+export function UserBlock({ avatarSrc, username, loading } : IUserBlockProps) {
     return (
         <a
             href="https://www.reddit.com/api/v1/authorize?client_id=T-aPHbv2gebrDzJXePoyWw&response_type=code&state=random_string&redirect_uri=http://localhost:3000/auth&duration=permanent&scope=read submit identity" 
@@ -21,7 +22,7 @@ export function UserBlock({ avatarSrc, username } : IUserBlockProps) {
 
             <div className={styles.username}>
                 <Break size={12} />
-                <Text size={20} color={username ? EColor.black : EColor.grey99}>{username || 'Anonimus'}</Text>
+                {loading ? <Text size={20} color={EColor.grey99}>Loading...</Text> : <Text size={20} color={username ? EColor.black : EColor.grey99}>{username || 'Anonimus'}</Text>}
             </div>
         </a>
     )

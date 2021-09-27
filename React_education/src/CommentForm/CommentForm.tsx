@@ -1,23 +1,54 @@
-import React, { ChangeEvent, FormEvent, useContext, useRef, useState } from "react";
-import { commentContext } from "../shared/context/commentContext";
-import { userContext } from "../shared/context/userContext";
+import React from "react";
+import { useDispatch, useSelector, useStore } from "react-redux";
+import { RootState, updateModalComment } from "../store/store";
 import styles from './CommentForm.css';
+import { useFormik } from "formik";
+
+interface I {
+    comment?: string
+}
+
+const validate = (values:I) => {
+    const errors:I = {};
+
+    if (!values.comment) {
+        errors.comment = 'Required';
+    } else if (values.comment.length <= 3) {
+        errors.comment = 'Must be more then 3 letters'
+    }
+
+    return errors;
+}
 
 export function CommentForm() {
-    const { value, onChange } = useContext(commentContext);
-    function handleChange(e:ChangeEvent<HTMLTextAreaElement>) {
-        onChange(e.target.value)
-    }
+    const dispatch = useDispatch();
+    const value = useSelector<RootState, string>(state => state.modalCommentText);
 
-    function handleSubmit(e:FormEvent) {
-        e.preventDefault();
-        console.log(value)
-    }
+    const formik = useFormik({
+        initialValues: {
+            comment: value || '',
+        },
+        validate,
+        onSubmit: values => {
+            dispatch(updateModalComment(values.comment))
+            alert(values.comment)
+        },
+    });
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit} >
-            <textarea className={styles.textarea} value={value} onChange={handleChange} ></textarea>
+        <form className={styles.form} onSubmit={formik.handleSubmit} >
+            <textarea
+                id={"comment"}
+                name={"comment"}
+                className={styles.textarea}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.comment}
+            />
+            {formik.touched.comment && formik.errors.comment ? (
+                <div className={styles.errorMessage} >{formik.errors.comment}</div>
+            ) : null }
             <button type="submit" className={styles.bnt}>Комментировать</button>
         </form>
-    )   
+    )
 };

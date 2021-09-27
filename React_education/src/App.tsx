@@ -1,43 +1,62 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './main.global.css';
 import { Layout } from './shared/Layout/Layout';
 import { Header } from './shared/Header/Header';
 import { Content } from './shared/Content/Content';
 import { CardsList } from './shared/CardsList/CardsList';
-import { EColor, Text } from './shared/Text/Text';
-import { Break } from './shared/Break/Break';
-import { EIcons, Icon } from './shared/Icon/Icon';
-import { useToken } from './hooks/useToken';
 import { hot } from 'react-hot-loader/root';
-import { tokenContext } from './shared/context/tokenContext';
-import { userContext, UserContextProvider } from './shared/context/userContext';
-import { usePostsData } from './hooks/usePostsData';
-import { PostsContextProvider } from './shared/context/PostsContext';
-import { commentContext } from './shared/context/commentContext';
-import { useCommentsData } from './hooks/useCommentsData';
+
+import { applyMiddleware, createStore, Middleware } from 'redux';
+import { Provider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { rootReducer } from './store/store';
+import thunk from 'redux-thunk'
+import { BrowserRouter, Link, Redirect, Route, Switch, useLocation, useParams } from 'react-router-dom';
+import { Post } from './Post/Post';
+import { CommentsDataContextProvider } from './shared/context/CommentsDataContext';
+
+const store = createStore(rootReducer, composeWithDevTools(
+    applyMiddleware(thunk),
+));
 
 function AppComponent() {
-    const [commentValue, setCommentValue] = useState('');
-    const [token] = useToken();
-    const CommentProvider = commentContext.Provider;
+    const [mouned, setMounted] = useState(false);
+    
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+
     return (
-        <tokenContext.Provider value={token}>
-            <UserContextProvider>
-                <PostsContextProvider>
-                    <CommentProvider value={{
-                        value: commentValue,
-                        onChange: setCommentValue
-                    }}>
-                        <Layout>
-                            <Header />
-                            <Content>
-                                <CardsList />
-                            </Content>
-                        </Layout>
-                    </CommentProvider>    
-                </PostsContextProvider>    
-            </UserContextProvider>    
-        </tokenContext.Provider>
+        <Provider store={store} >
+            {mouned && (
+                <BrowserRouter>
+                    <Switch>
+                        <Redirect from="/auth" to="/posts" />
+                        <Route path="/posts">
+                            <Layout>
+                                <Header />
+                                <Content>
+                                    <CardsList />
+                                    <Route path="/posts/:postId">
+                                        <CommentsDataContextProvider>
+                                            <Post />
+                                        </CommentsDataContextProvider>
+                                    </Route>
+                                </Content>
+                            </Layout>
+                        </Route>
+                        <Route exact path="/">
+                            <Redirect to="/posts" />
+                        </Route>
+                        <Route path="*">
+                            <h1 style={{ textAlign: 'center', backgroundColor: 'white', padding: '20px' }}>
+                                404 - страница не найдена
+                            </h1>
+                        </Route>
+                    </Switch>
+                </BrowserRouter>
+            )}
+        </Provider>
     );
 }
 
