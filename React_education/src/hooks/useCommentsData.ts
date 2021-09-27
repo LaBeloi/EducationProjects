@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { tokenContext } from "../shared/context/tokenContext";
+import { useSelector } from "react-redux";
+import { RootState } from "../store/store";
 
 interface IComments {
     body?: string
@@ -13,7 +14,7 @@ interface IResult {
 
 export function useCommentsData(postId:string) {
     const [data, setData] = useState<IResult>({});
-    const token = useContext(tokenContext);
+    const token = useSelector<RootState>(state => state.token);
     useEffect(() => {
         axios.get(`https://oauth.reddit.com/comments/${postId}`, {
             headers: { Authorization: `bearer ${token}` },
@@ -27,7 +28,6 @@ export function useCommentsData(postId:string) {
                 comments.push(i.data);
             }
             result.comments = comments;
-            // console.log(result)
             return result
         })
         .then((result) => setData(result))

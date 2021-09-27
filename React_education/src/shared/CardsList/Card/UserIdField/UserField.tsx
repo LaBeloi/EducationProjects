@@ -1,7 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useCommentsData } from '../../../../hooks/useCommentsData';
-import { Post } from '../../../../Post/Post';
-import {CommentsDataContextProvider } from '../../../context/CommentsDataContext';
+import React, { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { EIcons, Icon } from '../../../Icon/Icon';
 import styles from './userField.css';
 
@@ -9,9 +7,9 @@ interface IUserField {
     title?: string,
     name?: string,
     time?: number,
+    postId: string,
 }
-export function UserField({ title, name, time }: IUserField) { 
-    const [isMOdalOpened, setIsModalOpened] = useState(false);
+export function UserField({ title, name, time, postId }: IUserField) { 
     const ref = useRef<HTMLDivElement>(null);
     let hour;
     if (time === 1) {
@@ -19,6 +17,7 @@ export function UserField({ title, name, time }: IUserField) {
     } else if (time === 2 || time === 3 || time === 4) {
         hour = 'часа'
     } else hour = 'часов'
+
     return (
         <div className={styles.userField} ref={ref}>
             <div className={styles.seen}>
@@ -37,16 +36,12 @@ export function UserField({ title, name, time }: IUserField) {
                     {time} {hour} назад
                 </span>
             </div>
-            <h1 className={styles.posterHeader} onClick={() => {
-                setIsModalOpened(true)
-            }} >{title}</h1>
-            {isMOdalOpened && (
-                <CommentsDataContextProvider postId={ref.current?.parentElement?.id!}>
-                    <Post
-                        onClose={() => { setIsModalOpened(false) }}
-                    />
-                </CommentsDataContextProvider>
-            )}
+            <Link
+                to={`/posts/:${postId}`}
+                className={styles.posterHeader} 
+            >
+                {title}
+            </Link>
         </div>
     );
 };

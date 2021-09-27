@@ -6,15 +6,18 @@ import { ButtonsField } from './ButtonsField/ButtonsField';
 import { Burger } from './Burger/Burger';
 import { DropList } from './Burger/DropList/DropList';
 import { Dropdown } from '../../Dropdown/Dropdown';
-import { PostsContext } from '../../context/PostsContext';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../store/store';
+import { IResponseObject } from '../../../store/postsData/postsData';
 
 interface ICard {
-    id?: string
+    id: string
 }
 
 export function Card( { id } : ICard ) {
-    const list = useContext(PostsContext);
+    const list = useSelector<RootState, IResponseObject[]>(state => state.postsData);
     let item;
+    if (!list) return <div>Error</div>
     for (let i of list) {
         if (i.key === id) {
             item = i;
@@ -24,7 +27,7 @@ export function Card( { id } : ICard ) {
     const time = Math.round(((now - item?.published!)/60)/60)
     return (
         <li className={styles.card} id={item?.key} >
-            <UserField title={item?.title} name={item?.name} time={time} />
+            <UserField postId={id} title={item?.title} name={item?.name} time={time} />
             <Poster />
             <ButtonsField likes={item?.likes} />
             <Dropdown 
